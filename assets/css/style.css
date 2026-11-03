@@ -157,6 +157,10 @@ em { font-style: normal; font-weight: 600; }
   text-decoration: none;
 }
 .logo-placeholder { width: 30px; height: 30px; border-radius: 22%; display: block; }
+/* JGnA, with the full name in small type beneath it. */
+.site-brand { display: flex; flex-direction: column; line-height: 1.02; }
+.site-title { font-size: 1.15rem; font-weight: 800; letter-spacing: -0.01em; }
+.site-tagline { margin-top: 2px; font-size: 0.66rem; font-weight: 600; letter-spacing: 0.02em; color: var(--ink-2); }
 
 .hamburger {
   display: inline-grid;

@@ -41,7 +41,7 @@
 [data-app="swingawaybaseball"] { --accent: #FF9A4D; --accent-2: #5B8CFF; }
 [data-app="ontime"] { --accent: #6BB6FF; --accent-2: #FF5A6E; }
 [data-app="meatbawlcity"] { --accent: #FF8A4C; --accent-2: #FF4D5E; }
-[data-app="weightstock"] { --accent: #F5C04E; --accent-2: #FFE29A; }
+[data-app="weightstock"] { --accent: #B884FF; --accent-2: #F0B44A; }
 
 /* Worked out from the two above wherever they are set, so an app's colours
    reach everything derived from them. */

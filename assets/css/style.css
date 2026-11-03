@@ -1,19 +1,24 @@
+/* Same night as joemet123.com: deep navy, a glow at the top and two layers of
+   twinkling stars, always dark. The site's own colour is cyan; every app's
+   pages (and its tile on the home page) swap in that app's colours through
+   data-app, so a page looks like the app it is about. */
 :root {
-  color-scheme: light dark;
-  --bg: #F5F5F7;
-  --surface: #FFFFFF;
-  --surface-2: #ECECF0;
-  --ink: #1D1D1F;
-  --ink-2: #45454A;
-  --ink-3: #6B6B70;
-  --line: #DCDCE1;
-  --line-strong: #C2C2C8;
-  --accent: #0A7A61;
-  --accent-soft: rgba(10, 122, 97, 0.1);
-  --btn: #1D1D1F;
-  --btn-ink: #FFFFFF;
-  --warn: #C4302B;
-  --band: rgba(245, 245, 247, 0.86);
+  color-scheme: dark;
+  --bg: #0C0A22;
+  --surface: #131B3B;
+  --surface-2: #1A2449;
+  --ink: #F6F5FF;
+  --ink-2: #CACEE6;
+  --ink-3: #A3A9CC;
+  --line: rgba(176, 196, 255, 0.12);
+  --line-strong: rgba(176, 196, 255, 0.24);
+  --warn: #FF6B7A;
+  --band: rgba(12, 10, 34, 0.82);
+  --btn-ink: #07101F;
+
+  /* Cyan: the site's colour. */
+  --accent: #62D2FF;
+  --accent-2: #2E9BFF;
 
   --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --content-w: 68rem;
@@ -24,23 +29,28 @@
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0E0E10;
-    --surface: #1A1A1D;
-    --surface-2: #26262A;
-    --ink: #F5F5F7;
-    --ink-2: #C8C8CD;
-    --ink-3: #9A9AA1;
-    --line: #2C2C31;
-    --line-strong: #3F3F45;
-    --accent: #48D3B0;
-    --accent-soft: rgba(72, 211, 176, 0.14);
-    --btn: #F5F5F7;
-    --btn-ink: #111113;
-    --warn: #FF6B61;
-    --band: rgba(14, 14, 16, 0.84);
-  }
+/* Each app's two colours, taken from its icon. */
+[data-app="product"] { --accent: #FFC94D; --accent-2: #B86BFF; }
+[data-app="simpleslotz"] { --accent: #FF5A6B; --accent-2: #FFC94D; }
+[data-app="waterplay"] { --accent: #5BC0FF; --accent-2: #FFD34D; }
+[data-app="ezlightswitch"] { --accent: #5DE6F0; --accent-2: #2EA3CB; }
+[data-app="bubblepopfrenzy"],
+[data-app="bubblepopmaster"] { --accent: #FF8AD0; --accent-2: #7CF2C8; }
+[data-app="countdowns"] { --accent: #C9A7FF; --accent-2: #FF8BD1; }
+[data-app="baseballswinger"],
+[data-app="swingawaybaseball"] { --accent: #FF9A4D; --accent-2: #5B8CFF; }
+[data-app="ontime"] { --accent: #6BB6FF; --accent-2: #FF5A6E; }
+[data-app="meatbawlcity"] { --accent: #FF8A4C; --accent-2: #FF4D5E; }
+[data-app="weightstock"] { --accent: #F5C04E; --accent-2: #FFE29A; }
+
+/* Worked out from the two above wherever they are set, so an app's colours
+   reach everything derived from them. */
+body,
+[data-app] {
+  --accent-soft: color-mix(in srgb, var(--accent) 15%, transparent);
+  --btn: var(--accent);
+  --glow: color-mix(in srgb, var(--accent) 17%, transparent);
+  --glow-2: color-mix(in srgb, var(--accent-2) 12%, transparent);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -64,6 +74,59 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
+
+/* The night sky, from joemet123.com: a glow at the top in the page's colours,
+   then two star layers that twinkle out of step. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(70% 40% at 50% -8%, var(--glow), transparent 70%),
+    radial-gradient(45% 30% at 92% 4%, var(--glow-2), transparent 70%),
+    var(--bg);
+}
+body::after,
+html::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+body::after {
+  opacity: 0.55;
+  background-image:
+    radial-gradient(circle at 18% 28%, rgba(98, 210, 255, 0.55) 0 1px, transparent 1.7px),
+    radial-gradient(circle at 72% 64%, rgba(255, 79, 150, 0.5) 0 1.1px, transparent 1.8px),
+    radial-gradient(circle at 44% 82%, rgba(163, 91, 255, 0.6) 0 1.2px, transparent 1.9px),
+    radial-gradient(circle at 88% 12%, rgba(255, 255, 255, 0.45) 0 0.8px, transparent 1.4px);
+  background-size: 173px 173px, 241px 241px, 307px 307px, 127px 127px;
+}
+html::after {
+  opacity: 0.7;
+  background-image:
+    radial-gradient(circle at 30% 40%, #fff 0 1.2px, rgba(98, 210, 255, 0.45) 2px, transparent 4.5px),
+    radial-gradient(circle at 76% 22%, #fff 0 1px, rgba(255, 79, 150, 0.4) 1.8px, transparent 4px),
+    radial-gradient(circle at 58% 78%, #fff 0 1.1px, rgba(163, 91, 255, 0.45) 1.9px, transparent 4.2px);
+  background-size: 389px 389px, 457px 457px, 523px 523px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes sky-twinkle {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 0.85; }
+  }
+  @keyframes sky-glint {
+    0%, 100% { opacity: 0.05; }
+    45% { opacity: 1; }
+    55% { opacity: 0.9; }
+  }
+  body::after { animation: sky-twinkle 5.5s ease-in-out infinite; }
+  html::after { animation: sky-glint 3.7s ease-in-out -1.6s infinite; }
+}
+
 
 img { max-width: 100%; height: auto; }
 
@@ -439,6 +502,12 @@ em { font-style: normal; font-weight: 600; }
   background: var(--surface);
   color: var(--ink);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+}
+/* On a phone the tabs share the width exactly; five of them (SimpleSlotz)
+   used to push the page sideways. */
+@media (max-width: 559px) {
+  .app-siblings { grid-auto-columns: minmax(0, 1fr); }
+  .app-sibling { padding: 0.45rem 0.3rem; font-size: 0.82rem; }
 }
 @media (min-width: 560px) {
   .app-siblings { width: fit-content; grid-auto-columns: auto; }

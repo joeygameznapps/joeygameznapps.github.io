@@ -8,7 +8,7 @@
   <meta name="description" content="Your message was sent.">
   <meta name="robots" content="noindex, nofollow">
   <link rel="canonical" href="https://joeygameznapps.github.io/thanks/">
-  <link rel="stylesheet" href="/assets/css/style.css?v=n1103b">
+  <link rel="stylesheet" href="/assets/css/style.css?v=n1105a">
   <meta name="theme-color" content="#0C0A22">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_US">
@@ -29,10 +29,6 @@
 
   <div class="site-band">
     <header class="site-header">
-      <a href="/" class="header-brand">
-        <img src="/icon.svg" alt="" class="logo-placeholder" width="30" height="30">
-        <span class="site-title">JoeyGamezNAppsz <span class="site-abbr">(JGnA)</span></span>
-      </a>
       <nav class="main-nav" aria-label="Main Navigation">
         <ul>
         <li><a href="/">Apps</a></li>
@@ -41,9 +37,6 @@
         <li><a href="/terms/">Terms</a></li>
         </ul>
       </nav>
-      <button class="hamburger" aria-label="Toggle Navigation" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
     </header>
   </div>
   <main id="main" class="main-content page-shell">
@@ -53,8 +46,9 @@
         <h1 class="page-title">Message Sent</h1>
         <p class="page-intro">Thanks For Getting In Touch. Support Messages Usually Get A Reply Within 3 Business Days, And Privacy Requests Within 30 Days. Replies Are Not Instant, So Please Do Not Send It Twice.</p>
         <div class="notfound-links">
-          <a class="btn btn-accent" href="/">All Apps</a>
+          <a class="btn btn-accent" id="go-back" href="/">Back</a>
         </div>
+        <script>!function(){var b=document.getElementById("go-back");if(!b)return;var f=new URLSearchParams(location.search).get("from");if(f&&/^\/(?!\/)[\w\-\/#]*$/.test(f)){b.href=f;return}var r=document.referrer;try{if(r&&new URL(r).origin===location.origin){b.href=r;return}}catch(e){}b.addEventListener("click",function(e){if(history.length>1){e.preventDefault();history.back()}})}();</script>
       </div>
     </section>
   </main>
@@ -67,11 +61,10 @@
         <a href="/privacy/">Privacy</a>
         <a href="/terms/">Terms</a>
       </div>
-      <p class="footer-contact">Contact: <a href="mailto:Business@joemet123.com">Business@joemet123.com</a></p>
       <p class="footer-legal">&copy; 2026 Joemet123 LLC. All Rights Reserved.</p>
     </div>
   </footer>
 
-  <script src="/assets/js/main.js?v=a261101"></script>
+  <script src="/assets/js/main.js?v=a261105"></script>
 </body>
 </html>
